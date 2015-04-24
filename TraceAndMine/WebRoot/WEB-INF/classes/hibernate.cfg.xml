@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="show_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="hbm2ddl.auto">update</property>
+
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql:///traceandmining</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		<!-- 指定连接数据库连接池的最大连接数 -->
+		<property name="maxPoolSize">100</property>
+		<!-- 指定连接数据库连接池的最小连接数 -->
+		<property name="minPoolSize" >20</property>
+		<!-- 指定连接数据库连接池的初始化连接数 -->
+		<property name="initialPoolSize">100</property>
+		<!--为单向关联(一对一, 多对一)的外连接抓取（outer join fetch）树设置最大深度. 值为0意味着将关闭默认的外连接抓取.   -->
+		<property name="hibernate.max_fetch_depth">2</property>
+		
+		
+		<!-- 收集统计数据 便与优化 -->
+		<property name="hibernate.generate_statistics">true</property>
+		<!-- 允许被缓存的JDBC连接开启自动提交(autocommit) (不建议).  -->
+		<property name="hibernate.connection.autocommit">false</property>
+		<!-- <property name="javax.persistence.validation.mode">all</property> -->	
+		<!--start ORM define by Jane -->
+		<mapping class="com.ccnu.po.TracePO" />
+		<mapping class="com.ccnu.po.SequencePO" />
+		<!-- end ORM define by Jane -->
+		
+
+
+
+
+
+
+
+
+
+	</session-factory>
+</hibernate-configuration> 

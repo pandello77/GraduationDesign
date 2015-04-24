@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.action.extension" value="do,action" />
+	<constant name="struts.multipart.maxSize" value="1070109600" />
+	<constant name="struts.multipart.saveDir" value="/images" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.ui.theme" value="simple" />
+
+	<!-- 全局结果视图进行配置 -->
+	<package name="root" namespace="/" extends="json-default">
+		<global-results>
+			<result name="error">/error.jsp</result>	<!-- 错误页面的配置 -->
+			<result name="json" type="json"><!-- json格式数据的配置 -->
+				<param name="excludeProperties"> 
+				.*hibernateLazyInitializer 
+				</param>
+			 </result>
+		</global-results>
+		
+		<action name="traceStart" class="com.ccnu.action.TraceAction" 
+		method="start"></action>
+		<action name="traceReset" class="com.ccnu.action.TraceAction" 
+		method="delete"></action>
+		<action name="mine" class="com.ccnu.action.MineAction" 
+		method="mine"></action>
+		
+	</package>
+
+</struts>  
